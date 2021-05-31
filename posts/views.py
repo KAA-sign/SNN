@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Post
 from django.http import JsonResponse
+from django.core import serializers
 
 # Create your views here.
 
@@ -15,4 +16,5 @@ def home_view(request):
 
 def post_view_json(request):
     qs = Post.objects.all()
-    return JsonResponse({'data':qs})
+    data = serializers.serialize('json', qs)
+    return JsonResponse({'data':data})
