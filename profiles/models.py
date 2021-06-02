@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 
 class Profile(models.Model):
@@ -15,3 +14,18 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def get_my_posts(self):
+        return self.post_set.all()
+
+    @property
+    def num_posts(self):
+        return self.post_set.all().count()
+
+    def get_following(self):
+        return self.following.all()
+
+    def get_following_users(self):
+        following_list = [p for p in self.get_following()]
+        return following_list
+

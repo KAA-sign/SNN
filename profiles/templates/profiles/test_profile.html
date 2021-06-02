@@ -8,7 +8,9 @@ test profile
 
 {% block content %}
 
-{{ profile }}
+<p><b>My post<b> : {{ profile.get_my_posts }}</p>
+<p><b>My post number<b> : {{ profile.num_posts }}</p>
+<p><b>Following profiles<b> : {{ profile.get_following }}</p>
+<p><b>Following profiles list<b> : {{ profile.get_following_users }}</p>
 
 {% endblock content %}
-
